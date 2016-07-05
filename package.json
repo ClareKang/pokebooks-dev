@@ -4,7 +4,11 @@
   "description": "this is development web for pokebooks",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "NODE_ENV=dev node_modules/.bin/webpack-dev-server --progress",
+    "dist": "NODE_ENV=production node_modules/.bin/webpack --production",
+    "dist:dev": "NODE_ENV=dev node_modules/.bin/webpack --production",
+    "test": "mocha --compilers js:babel-core/register --require ./test/setup.js 'test/**/*.@(js|jsx)'",
+    "test:watch": "npm run test -- --watch --watch-extensions jsx"
   },
   "repository": {
     "type": "git",
