@@ -1,0 +1,17 @@
+machine:
+  node:
+    version:
+      4.2.4
+  python:
+    version:
+      2.7.3
+dependencies:
+  pre:
+    - npm install
+    - pip install awscli
+    - npm run dist
+deployment:
+  default:
+    branch: master
+    commands:
+      # - aws s3 cp dist s3://dev-intra.meshprime.com --region ap-northeast-2 --recursive --exclude '.git/*'
