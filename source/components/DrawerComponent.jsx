@@ -1,6 +1,20 @@
 import React, { PropTypes } from 'react';
-import { AppBar, Drawer, MenuItem, IconButton } from 'material-ui';
-import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
+import { AppBar, Drawer, MenuItem } from 'material-ui';
+
+const menu = [
+  {
+    name: 'Menu 1',
+    route: '/menu1',
+  },
+  {
+    name: 'Menu 2',
+    route: '/menu2',
+  },
+  {
+    name: 'Menu 3',
+    route: '/menu3',
+  },
+];
 
 const DrawerComponent = props => (
   <Drawer open={props.open}>
@@ -9,8 +23,11 @@ const DrawerComponent = props => (
       showMenuIconButton={false}
       onTitleTouchTap={props.toggleDrawer}
     />
-    <MenuItem>Menu Item</MenuItem>
-    <MenuItem>Menu Item 2</MenuItem>
+    {
+      menu.map(item => (
+        <MenuItem>{item.name}</MenuItem>
+      ))
+    }
   </Drawer>
 );
 

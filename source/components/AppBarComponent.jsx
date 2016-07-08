@@ -5,7 +5,7 @@ import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
 
 const AppBarComponent = props => (
   <AppBar
-    title="Pokebooks"
+    title="Pokebooks Dev"
     iconElementLeft={
       <IconButton onClick={props.toggleDrawer}>
         <NavigationMenu />
