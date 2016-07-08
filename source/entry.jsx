@@ -16,7 +16,7 @@ import thunk from 'redux-thunk';
 import rootReducer from 'redux-modules/reducer';
 
 // app components
-import RootContainer from './components/RootContainer';
+import AppContainer from './components/AppContainer';
 
 // material ui
 // import {cyan500} from 'material-ui/styles/colors';
@@ -55,7 +55,7 @@ if (msieversion() > 0) {
     <MuiThemeProvider muiTheme={getMuiTheme(customTheme)}>
       <Provider store={store}>
         <Router history={history} render={applyRouterMiddleware(useScroll())}>
-          <Route path="/" component={RootContainer}>
+          <Route path="/" component={AppContainer}>
           {/*
             <Route path="live" component={LiveContainer} onEnter={requireAuth}>
               <IndexRedirect to="/live/deliveries" />

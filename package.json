@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ClareKang/pokebooks-test.git"
+    "url": "git+https://github.com/ClareKang/pokebooks-dev.git"
   },
   "author": "ClareKang",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ClareKang/pokebooks-test/issues"
+    "url": "https://github.com/ClareKang/pokebooks-dev/issues"
   },
-  "homepage": "https://github.com/ClareKang/pokebooks-test#readme",
+  "homepage": "https://github.com/ClareKang/pokebooks-dev#readme",
   "dependencies": {
     "immutable": "^3.8.1",
     "material-ui": "^0.15.1",
