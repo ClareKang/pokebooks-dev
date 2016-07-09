@@ -1,10 +1,9 @@
 import React, { PropTypes, Component } from 'react';
-import { CardText } from 'material-ui';
 import { Table, TableRow, TableHeaderColumn, TableRowColumn } from 'library/TableCollector';
 
 const PokemonDetailStat = props => {
   return (
-    <CardText expandable>
+    <div>
       <h4>Base stats</h4>
       <Table>
         <thead>
@@ -83,7 +82,7 @@ const PokemonDetailStat = props => {
           </TableRow>
         </tbody>
       </Table>
-    </CardText>
+    </div>
   );
 };
 

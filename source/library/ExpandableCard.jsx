@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react';
-import { Card, CardHeader } from 'material-ui/Card';
+import { Card, CardHeader, CardText } from 'material-ui/Card';
 
 const expandableCardStyle = {
   marginBottom: 10,
@@ -13,7 +13,13 @@ export default class ExpandableCard extends Component {
     };
     this.handleToggle = this.handleToggle.bind(this);
   }
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      this.state.expanded !== nextState.expanded
+    );
+  }
   handleToggle() {
+    console.log('handleToggle', this.props.title, this.state.expanded);
     this.setState({
       expanded: !this.state.expanded,
     });
@@ -30,7 +36,9 @@ export default class ExpandableCard extends Component {
           actAsExpander
           showExpandableButton
         />
-        {this.props.children}
+        <CardText expandable>
+          {this.props.children}
+        </CardText>
       </Card>
     );
   }
