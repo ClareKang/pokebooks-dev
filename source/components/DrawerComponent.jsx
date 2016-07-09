@@ -17,7 +17,7 @@ const menu = [
 ];
 
 const DrawerComponent = props => (
-  <Drawer open={props.open}>
+  <Drawer {...props}>
     <AppBar
       title="Pokebooks"
       showMenuIconButton={false}

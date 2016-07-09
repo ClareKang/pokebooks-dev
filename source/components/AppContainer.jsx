@@ -1,6 +1,5 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
-import { RaisedButton } from 'material-ui';
 
 import AppBarComponent from './AppBarComponent';
 import DrawerComponent from './DrawerComponent';
@@ -32,29 +31,12 @@ class AppContainer extends Component {
           <DrawerComponent
             open={this.state.open}
             toggleDrawer={this.toggleDrawer}
+            docked={false}
+            onRequestChange={this.toggleDrawer}
           />
           <div style={contentStyle}>
-            <p>Material UI를 벗어날 수 없는걸까</p>
-            <RaisedButton
-              label="Primary"
-              primary
-            />
-            <RaisedButton
-              label="Secondary"
-              secondary
-            />
-            <RaisedButton
-              label="Primary"
-              primary
-              disabled
-            />
-            <RaisedButton
-              label="Secondary"
-              secondary
-              disabled
-            />
+            {this.props.children}
           </div>
-          {this.props.children}
         </div>
       </div>
     );
@@ -62,7 +44,7 @@ class AppContainer extends Component {
 }
 
 AppContainer.propTypes = {
-  children: React.PropTypes.node,
+  children: PropTypes.node,
 };
 
 const ConnectedAppContainer = connect(
