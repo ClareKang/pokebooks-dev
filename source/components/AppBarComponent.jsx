@@ -1,15 +1,17 @@
 import React, { PropTypes } from 'react';
-import { AppBar } from 'material-ui';
-import IconButton from 'material-ui/IconButton';
+import { AppBar, FlatButton, IconButton } from 'material-ui';
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
 
 const AppBarComponent = props => (
   <AppBar
-    title="Pokebooks Dev"
+    title={'Pokedex Development'}
     iconElementLeft={
       <IconButton onClick={props.toggleDrawer}>
         <NavigationMenu />
       </IconButton>
+    }
+    iconElementRight={
+      <FlatButton label="Sign In" />
     }
   />
 );

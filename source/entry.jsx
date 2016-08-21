@@ -3,8 +3,6 @@ import './entry.scss';
 // react
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, IndexRedirect, hashHistory, applyRouterMiddleware } from 'react-router';
-import useScroll from 'react-router-scroll';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 // Redux
@@ -15,11 +13,23 @@ import thunk from 'redux-thunk';
 
 import rootReducer from 'redux-modules/reducer';
 
+// router
+import { Router, Route, IndexRoute, IndexRedirect,
+  applyRouterMiddleware, useRouterHistory } from 'react-router';
+import useScroll from 'react-router-scroll';
+import { createHashHistory } from 'history';
+// useRouterHistory creates a composable higher-order function
+const appHistory = useRouterHistory(createHashHistory)({ queryKey: false });
+
 // app components
 import AppContainer from './components/AppContainer';
 
+import PokemonContainer from './components/pokemon/PokemonContainer';
+import PokemonList from './components/pokemon/PokemonList';
+import PokemonRegister from './components/pokemon/PokemonRegister';
+import PokemonDetail from './components/pokemon/PokemonDetail';
+
 // material ui
-// import {cyan500} from 'material-ui/styles/colors';
 import customTheme from 'library/customTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -45,17 +55,19 @@ if (msieversion() > 0) {
   const store = createStore(
     rootReducer, compose(applyMiddleware(thunk))
   );
-  const history = syncHistoryWithStore(hashHistory, store);
-
-
-
-
+  const history = syncHistoryWithStore(appHistory, store);
 
   ReactDOM.render(
     <MuiThemeProvider muiTheme={getMuiTheme(customTheme)}>
       <Provider store={store}>
         <Router history={history} render={applyRouterMiddleware(useScroll())}>
           <Route path="/" component={AppContainer}>
+            <IndexRedirect to="/pokemon" />
+            <Route path="pokemon" component={PokemonContainer}>
+              <IndexRoute component={PokemonList} />
+              <Route path="register" component={PokemonRegister} />
+              <Route path=":pokemonId" component={PokemonDetail} />
+            </Route>
           {/*
             <Route path="live" component={LiveContainer} onEnter={requireAuth}>
               <IndexRedirect to="/live/deliveries" />
